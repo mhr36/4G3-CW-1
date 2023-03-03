@@ -195,14 +195,14 @@ def task_5(w=12, K=100, sim_time=10, window_time=0.1):
 
     plt.show()
 
-
+    
 def task_6_1(rx=10, tau=2e-2, K=100, J_EE=2, J_IE=4.4, J_EI=-2.5, J_II=-3, J_EX=1, J_IX=0.2):
     Jr = np.array([[J_EE, J_EI], [J_IE, J_II]])
     Jx = np.array([J_EX, J_IX])
 
     D = np.eye(2) / (tau * np.sqrt(K))
 
-    Rr = np.linalg.solve(D - Jr, Jx * rx)
+    Rr = np.linalg.solve(- Jr, Jx * rx)
 
     print(Rr)
 
@@ -252,8 +252,8 @@ def task_6_3():
 
 
 def task_6_4():
-    N = 300
-    K_range = np.linspace(10, 250, 11, dtype=np.int32)
+    N = 1000
+    K_range = np.linspace(10, 750, 11, dtype=np.int32)
     results = np.zeros((len(K_range), 2))
 
     for i, K in enumerate(K_range):
@@ -285,7 +285,7 @@ def task_6_5():
 
 
 if __name__ == '__main__':
-    task_6_5()
+    task_6_4()
 
 # Firing rate 9.9
 # 4.5 fano factor 0.42 firing rate 9.8
